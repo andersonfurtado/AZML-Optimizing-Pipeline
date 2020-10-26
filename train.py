@@ -7,22 +7,18 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
+#!pip install azureml
+#!pip install azureml.core
+#!pip install azureml.dataprep
+!pip install easydict
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+import easydict
+#from easydict import EasyDict
 
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-
-ds = ### YOUR CODE HERE ###
-
-x, y = clean_data(ds)
-
-# TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###a
-
-run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -30,7 +26,8 @@ def clean_data(data):
     weekdays = {"mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6, "sun":7}
 
     # Clean and one hot encode data
-    x_df = data.to_pandas_dataframe().dropna()
+    #x_df = data.to_pandas_dataframe().dropna()
+    x_df = data.dropna()
     jobs = pd.get_dummies(x_df.job, prefix="job")
     x_df.drop("job", inplace=True, axis=1)
     x_df = x_df.join(jobs)
@@ -49,20 +46,35 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
 
+    return x_df, y_df
+
+   
 def main():
     # Add arguments to script
-    parser = argparse.ArgumentParser()
+    #parser = argparse.ArgumentParser()
 
-    parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
-    parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
+    #parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
+    #parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
 
-    args = parser.parse_args()
+    #args = parser.parse_args()
+    #args = parser.parse_args(argv[1:])
+    args = easydict.EasyDict({
+      "C": 1.0,
+      "max_iter": 100
+    })
+
+    
+    dataset_path = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+    #ds = TabularDatasetFactory.from_delimited_files(dataset_path)
+    ds = pd.read_csv(dataset_path)
+    x, y = clean_data(ds)
+    run = Run.get_context() 
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
 
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
