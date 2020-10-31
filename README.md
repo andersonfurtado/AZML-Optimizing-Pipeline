@@ -4,25 +4,31 @@
 * [Overview](#overview)
 * [Summary](#summary)
 * [Scikit-learn Pipeline](#scikit-learn-pipeline)
-  - [Benefits of the chosen Parameter Sampler](#benefits-of-the-chosen-parameter-sampler)
-  - [Benefits of the chosen early termination policy](#benefits-of-the-chosen-early-termination-policy)
 * [AutoML](#automl)
 * [Pipeline comparison](#pipeline-comparison)
 * [Future work](#future-work)
 * [Proof of cluster clean up](#proof-of-cluster-clean-up)
+* [References](#references)
+
 
 ## Overview
-This project is part of the Udacity Azure ML Nanodegree.
-In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
-This model is then compared to an Azure AutoML run.
+This project is part of the Udacity Azure ML Nanodegree. The data of this projec is related with direct marketing campaigns of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y). [Moro et al., 2014]
+In this project, I build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
+This model was then compared to an Azure AutoML run.
 
 ## Summary
-**In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
+The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed. The classification goal is to predict if the client will subscribe (yes/no) a term deposit (variable y). [Moro et al., 2014]
 
-**In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+The solution was tried in two ways:
+- LogisticRegression model with scikit-learn / Azure HyperDrive.
+
+- Azure AutoML to find the best accuracy.
+
+The best performing model was a Voting Ensemble found using tuning the model's hyperparameters with Azure HyperDrive
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+The pipeline architecture is shown in the following figure:
 
 **What are the benefits of the parameter sampler you chose?**
 
@@ -40,3 +46,15 @@ This model is then compared to an Azure AutoML run.
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
+
+## References
+
+
+[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM'2011, pp. 117-121, Guimaraes, Portugal, October, 2011.
+[Microsoft 2020] BanditPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py
+[Microsoft 2020] MedianStoppingPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py
+[Microsoft 2020] RandomParameterSampling class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py
+[2007-2020, scikit-learn deveopers] sklearn.model_selection.train_test_split — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+[2007-2020, scikit-learn deveopers]sklearn.linear_model.LogisticRegression — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
