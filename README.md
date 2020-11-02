@@ -29,6 +29,32 @@ The best performing model was a Voting Ensemble found using tuning the model's h
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 The pipeline architecture is shown in the following figure:
+![Overview](images/Overview.png)
+The definition of the pipeline architecture, including data, adjustment of hyperparameters and classification algorithm observed the following steps:
+<ol>
+  <li>Setup Training Script (Review and Modify the `train.py` script)
+    <ul>
+      <li> Import data from the specified URL using "TabularDatasetFactory" </li>
+      <li> Split data into train and test sets </li>
+      <li> Splitting of data into train and test data </li>
+      <li> Using scikit-learn logistic regression model for classification </li>
+    </ul>
+  </li><br>
+  <li> Creation of a computing cluster, to HyperDrive, to running the train.py script containing the custom-coded Logistic Regression with a HyperDrive run
+  </li><br>
+  <li> Review and modify the `project.ipynb` notebook
+    <ul>
+      <li> Specify the parameter sample </li>
+      <li> Specify the policy for early stopping </li>
+      <li> Creation of estimator for the train.py script </li>
+      <li> Creation of HyperDriveConfig </li>
+      <li> Submition of HyperDriveConfig to run the experiment </li>
+      <li> Using the RunDetails widget to see the progress of the run </li>
+      <li> Using the .get_best_run_by_primary_metric() method of the run to select the best hyperparameters for the model </li>
+      <li> Save the best model </li>
+    </ul>
+  </li><br>
+</ol>     
 
 **What are the benefits of the parameter sampler you chose?**
 
