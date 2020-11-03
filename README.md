@@ -70,8 +70,8 @@ The AutoConfig configuration on the same Notebook observed the following steps:
       <li> Submiting of AutoML run </li>
       <li> Saving the best model </li>
 </ol>     
-For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:22 and accuracy 0.9159332321699545, as described below:
-
+For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:30 and accuracy 0.9161933665727292, as described below:
+![AutoML_run](imagens/Automl_run.png)
 ![Accuracy](imagens/Accuracy.png)
 ![Precision_recall](imagens/Precision_recall.png)
 
@@ -83,7 +83,7 @@ The Voting Ensemble .
 The model originated from HyperDrive had the accuracy as described in the following image:
 ![HyperDrive_Accuracy](imagens/HyperDrive_Accuracy.png)
 
-The accuracy from HyperDrive was Accuracy': 0.9127215343529983, while the accuracy of AutoML model was valued: 0.9159332321699545. Therefore, the difference was 0,0022116978169562, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
+The accuracy from HyperDrive was Accuracy':0.9124787569798495, while the accuracy of AutoML model was valued: 0.9161933665727292. Therefore, the difference was 0,0022116978169562, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
 
 ## Future work
 
@@ -103,13 +103,14 @@ The implementation of these improvements in future work to improve the accuracy 
 
 ## References
 
-
-[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
-[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM'2011, pp. 117-121, Guimaraes, Portugal, October, 2011.
-[Microsoft 2020] BanditPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py
-[Microsoft 2020] MedianStoppingPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py
-[Microsoft 2020] Tune hyperparameters for your model with Azure Machine Learning | Microsoft Docs. https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters#define-search-space
-[Microsoft 2020] RandomParameterSampling class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py
-[2007-2020, scikit-learn deveopers] sklearn.model_selection.train_test_split — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
-[2007-2020, scikit-learn deveopers]sklearn.linear_model.LogisticRegression — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
-
+<ol>
+  <li> [Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+  <li> [Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM'2011, pp. 117-121, Guimaraes, Portugal, October, 2011.
+  <li> [Microsoft 2020] BanditPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py
+  <li> [Microsoft 2020] MedianStoppingPolicy class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py
+  <li> [Microsoft 2020] Tune hyperparameters for your model with Azure Machine Learning | Microsoft Docs. https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters#define-search-space
+  <li> [Microsoft 2020] RandomParameterSampling class - Azure Machine Learning Python | Microsoft Docs. https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py
+  <li> [2007-2020, scikit-learn deveopers] sklearn.model_selection.train_test_split — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+  <li> [2007-2020, scikit-learn deveopers]sklearn.linear_model.LogisticRegression — scikit-learn 0.23.2 documentation. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+  </li><br>
+</ol>  
