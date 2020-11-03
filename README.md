@@ -70,13 +70,11 @@ The AutoConfig configuration on the same Notebook observed the following steps:
       <li> Submiting of AutoML run </li>
       <li> Saving the best model </li>
 </ol>     
-For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:30 and accuracy 0.9161933665727292, as described below:
+For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:31 and accuracy 0.9161933665727292, as described below:
 
 ![Automl_run](imagens/Automl_run.png)
 
-![Table_Accuracy](imagens/Tabela_Accuracy.png)
-
-![Precision_recall](imagens/Precision_recall.png)
+![Accuracy_chart](imagens/Accuracy_chart.png)
 
 
 ## Pipeline comparison
@@ -84,7 +82,7 @@ For the generation of the model and hyperparameters, the following specification
 The model originated from HyperDrive had the accuracy as described in the following image:
 ![HyperDrive_Accuracy](imagens/HyperDrive_Accuracy.png)
 
-The accuracy from HyperDrive was Accuracy':0.9124787569798495, while the accuracy of AutoML model was valued: 0.9161933665727292. Therefore, the difference was 0,0022116978169562, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
+The accuracy from HyperDrive was Accuracy':0.9124787569798495, while the accuracy of AutoML model was valued: 0.9161933665727292. Therefore, the difference was 0,0037146095928797, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
 
 ## Future work
 
