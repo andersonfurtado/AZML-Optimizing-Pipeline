@@ -99,8 +99,9 @@ Some areas of improvement for future experiments are:
 The implementation of these improvements in future work to improve the accuracy of the model and obtain new insights for the business. In addition, it is possible to develop pipelines that make it possible to reuse this model and continuous improvements.
 
 ## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+Image of cluster marked for deletion:
+![Deleting Compute cluster](imagens/compute-cluster_deleting.png)
+
 
 ## References
 
