@@ -81,6 +81,7 @@ For the generation of the model and hyperparameters, the following specification
 
 The model originated from HyperDrive had the accuracy as described in the following image:
 ![HyperDrive_Accuracy](imagens/HyperDrive_Accuracy.png)
+![HyperDrive_Run](imagens/HyperDrive_run.png)
 
 The accuracy from HyperDrive was Accuracy':0.9124787569798495, while the accuracy of AutoML model was valued: 0.9161933665727292. Therefore, the difference was 0,0037146095928797, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
 
