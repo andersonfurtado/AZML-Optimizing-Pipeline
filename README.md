@@ -71,12 +71,13 @@ The AutoConfig configuration on the same Notebook observed the following steps:
       <li> Saving the best model </li>
 </ol>     
 For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:30 and accuracy 0.9161933665727292, as described below:
-![AutoML_run](imagens/Automl_run.png)
-![Accuracy](imagens/Accuracy.png)
+
+![Automl_run](imagens/Automl_run.png)
+
+![Table_Accuracy](imagens/Tabela_Accuracy.png)
+
 ![Precision_recall](imagens/Precision_recall.png)
 
-The Voting Ensemble .
- model and hyperparameters
 
 ## Pipeline comparison
 
