@@ -70,18 +70,32 @@ The AutoConfig configuration on the same Notebook observed the following steps:
       <li> Submiting of AutoML run </li>
       <li> Saving the best model </li>
 </ol>     
-For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (duration 0:01:22, accuracy 0.9159332321699545), as described below:
+For the generation of the model and hyperparameters, the following specifications were used in AutoML: experiment_timeout_minutes=30, task='classification',     primary_metric='accuracy', label_column_name='y', iterations=50, max_concurrent_iterations = 5, enable_early_stopping = True and n_cross_validations=7. AutoML experimented with several models to find the model most accurately: ExtremeRandomTrees, RandomForest, LightGBM, XGBoost Classifier, etc, but the one that presented the best accuracy was VotingEnsemble (model predicts based on the weighted average of predicted class probabilities) with duration 0:01:22 and accuracy 0.9159332321699545, as described below:
 
 ![Accuracy](imagens/Accuracy.png)
-![Accuracy_table](imagens/Accuracy_table.png)
-The Voting Ensemble model predicts based on the weighted average of predicted class probabilities.
+![Precision_recall](imagens/Precision_recall.png)
+
+The Voting Ensemble .
  model and hyperparameters
 
 ## Pipeline comparison
-**Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
+
+The model originated from HyperDrive had the accuracy as described in the following image:
+![HyperDrive_Accuracy](imagens/HyperDrive_Accuracy.png)
+
+The accuracy from HyperDrive was Accuracy': 0.9127215343529983, while the accuracy of AutoML model was valued: 0.9159332321699545. Therefore, the difference was 0,0022116978169562, that is, the accuracy is close. As for the architecture aspect, there is a great advantage of AutoML in terms of saving resources and more scope of experimentation when using a wide variety of algorithms.
 
 ## Future work
-**What are some areas of improvement for future experiments? Why might these improvements help the model?**
+
+Some areas of improvement for future experiments are:
+- Test different sampling methods
+- specify different types of hyperparameter distributions
+- Change the search space
+- Exploring another range of values defined for each hyperparameter
+- Exploring another early termination policy
+- Using more data is the simplest and best possible way to prevent over-fitting
+
+The implementation of these improvements in future work to improve the accuracy of the model and obtain new insights for the business. In addition, it is possible to develop pipelines that make it possible to reuse this model and continuous improvements.
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
