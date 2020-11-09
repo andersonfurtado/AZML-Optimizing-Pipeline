@@ -24,7 +24,9 @@ The solution was tried in two ways:
 
 - Azure AutoML to find the best accuracy.
 
-The best performing model was a Voting Ensemble found using tuning the model's hyperparameters with Azure HyperDrive
+Tune hyperparameters by exploring the range of values defined for each hyperparameter. Hyperparameters can be discrete or continuous, and has a distribution of values described by a parameter expression. In this case, the hyperparameters to be explored were the inverse of the regularization force and the smaller values specify a stronger regularization represented by the letter C. The maximum number of iterations taken for the solvers to converge represented by max_iter in the parameter sample, whose C was one of the values [.01,0.1,1,10,100] and max_iter [25,50,75,100,125,150,175,200].
+
+In this experiment context, VotingEnsemble is considered the best model, based on the Accuracyd metric using Azure AutoML. VotingEnsemble implements soft-voting which uses weighted averages. Basically, we created the classifiers and created the Voting Ensemble object and passed those classifiers.
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
